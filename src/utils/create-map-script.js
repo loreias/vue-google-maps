@@ -10,16 +10,18 @@ export function createMapScript(options) {
     options.libraries = options.libraries.join(',')
   }
   options['callback'] = 'vueGoogleMapsInit'
+  options['loading'] = 'async'
   let baseUrl = 'https://maps.googleapis.com/maps/api/js?'
 
   let url =
     baseUrl +
     Object.keys(options)
-      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(options[key])).join('&')
+      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(options[key]))
+      .join('&')
 
   googleMapScript.setAttribute('src', url)
   googleMapScript.setAttribute('async', '')
   googleMapScript.setAttribute('defer', '')
 
-  return googleMapScript;
+  return googleMapScript
 }
