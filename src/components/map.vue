@@ -161,7 +161,6 @@ export default {
         const options = {
           ...this.options,
           ...getPropsValues(this, props),
-          mapId: 'DEMO_MAP_ID',
         }
         delete options.options
         this.$mapObject = new google.maps.Map(element, options)
