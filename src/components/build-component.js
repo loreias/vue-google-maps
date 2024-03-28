@@ -44,17 +44,8 @@ import MapElementMixin from './mapElementMixin'
  *
  */
 export default function (options) {
-  const {
-    mappedProps,
-    name,
-    ctr,
-    ctrArgs,
-    events,
-    beforeCreate,
-    afterCreate,
-    props,
-    ...rest
-  } = options
+  const { mappedProps, name, ctr, ctrArgs, events, beforeCreate, afterCreate, props, ...rest } =
+    options
 
   const promiseName = `$${name}Promise`
   const instanceName = `$${name}Object`
@@ -105,7 +96,7 @@ export default function (options) {
               ))()
             : new ConstructorObject(options)
 
-          bindProps(this, this[instanceName], mappedProps)
+          bindProps(this, this[instanceName], mappedProps, name)
           bindEvents(this, this[instanceName], events)
 
           if (afterCreate) {

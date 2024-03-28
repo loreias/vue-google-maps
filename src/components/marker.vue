@@ -20,28 +20,28 @@ const props = {
   attribution: {
     type: Object,
   },
-  clickable: {
-    type: Boolean,
-    twoWay: true,
-    default: true,
-  },
+  //   clickable: {
+  //     type: Boolean,
+  //     twoWay: true,
+  //     default: true,
+  //   },
   cursor: {
     type: String,
     twoWay: true,
   },
-  draggable: {
-    type: Boolean,
-    twoWay: true,
-    default: false,
-  },
+  //   draggable: {
+  //     type: Boolean,
+  //     twoWay: true,
+  //     default: false,
+  //   },
   icon: {
     twoWay: true,
   },
   label: {},
-  opacity: {
-    type: Number,
-    default: 1,
-  },
+  //   opacity: {
+  //     type: Number,
+  //     default: 1,
+  //   },
   options: {
     type: Object,
   },
@@ -64,7 +64,17 @@ const props = {
     type: Number,
     twoWay: true,
   },
-  visible: {
+  //   visible: {
+  //     twoWay: true,
+  //     default: true,
+  //   },
+  gmpDraggable: {
+    type: Boolean,
+    twoWay: true,
+    default: false,
+  },
+  gmpClickable: {
+    type: Boolean,
     twoWay: true,
     default: true,
   },

@@ -1,5 +1,5 @@
 import WatchPrimitiveProperties from '../utils/WatchPrimitiveProperties'
-import {Str} from "./string";
+import { Str } from './string'
 
 export function getPropsValues(vueInst, props) {
   return Object.keys(props).reduce((acc, prop) => {
@@ -28,7 +28,8 @@ export function bindProps(vueInst, googleMapsInst, props) {
     const eventName = attribute.toLowerCase() + '_changed'
     const initialValue = vueInst[attribute]
 
-    if (typeof googleMapsInst[setMethodName] === 'undefined') {
+    // if (typeof googleMapsInst[setMethodName] === 'undefined') {
+    if (componentName !== 'marker' && typeof googleMapsInst[setMethodName] === 'undefined') {
       throw new Error(
         `${setMethodName} is not a method of (the Maps object corresponding to) ${vueInst.$options._componentTag}`
       )
@@ -39,11 +40,17 @@ export function bindProps(vueInst, googleMapsInst, props) {
     // although this may really be the user's responsibility
     if (type !== Object || !trackProperties) {
       // Track the object deeply
-      vueInst.$watch(attribute,
+      vueInst.$watch(
+        attribute,
         () => {
           const attributeValue = vueInst[attribute]
 
-          googleMapsInst[setMethodName](attributeValue)
+          //   googleMapsInst[setMethodName](attributeValue)
+          if (componentName === 'marker') {
+            googleMapsInst[attribute] = attributeValue
+          } else {
+            googleMapsInst[setMethodName](attributeValue)
+          }
         },
         {
           immediate: typeof initialValue !== 'undefined',
