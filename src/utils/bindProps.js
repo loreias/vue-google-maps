@@ -17,7 +17,7 @@ export function getPropsValues(vueInst, props) {
  * watch. For deep watch, we also prevent the _changed event from being
  * $emitted if the data source was external.
  */
-export function bindProps(vueInst, googleMapsInst, props) {
+export function bindProps(vueInst, googleMapsInst, props, componentName = false) {
   for (let attribute in props) {
     let { twoWay, type, trackProperties, noBind } = props[attribute]
 
